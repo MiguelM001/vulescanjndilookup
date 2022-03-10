@@ -11,8 +11,6 @@
 #
 # vulescanjndilookup.py V 1.0
 #
-# DESCRIPCION:
-#
 #
 import re
 import os
@@ -49,19 +47,19 @@ def escaner(ruta):
 	primerIndicador= True
 	segundoIndicador= True
 
-	patron = re.compile('log4j-core\-(.*)\.jar')
+	#patron = re.match('log4j-core\-(.*)\.jar',xJar)
 
 	for actualDir, subDir, archivos in os.walk(ruta):#establecer la ruta
 		for xJar in archivos:
 			aux= xJar[len(xJar)-4:len(xJar)]
 			if '.JAR' == aux.upper():
 			
-				log4jCore= patron.search(xJar)
-			
+				log4jCore= re.match('log4j-core\-(.*)\.jar',xJar)
+
 				if log4jCore:
 					segundoIndicador= False
-					rutaAbsoluta= actualDir+'/'+log4jCore[0]
-					print("\nSe ha detectado el archivo "+log4jCore[0]+", en la siguiente ruta:\n")
+					rutaAbsoluta= actualDir+'/'+log4jCore.group(0)
+					print("\nSe ha detectado el archivo "+log4jCore.group(0)+", en la siguiente ruta:\n")
 					print(">>\t"+rutaAbsoluta)
 					coreJar = ZipFile(rutaAbsoluta, 'r')
 					try:
@@ -85,7 +83,7 @@ def escaner(ruta):
 	if segundoIndicador:
 	
 		print("No se detecto el archivo: log4j-core*.jar  en la ruta: "+ruta+"\n")
-					
+
 #===========================INTERFAZ=============================
 
 if len(sys.argv) <= 3 and len(sys.argv) >=2:
@@ -105,6 +103,3 @@ else:
  		imprimirAyuda()
  		
 print("\nHecho por VenCERT-2022\n")
-      
-
-			
