@@ -17,5 +17,3 @@ python3 vulescanjndilookup.py -h
 python3 vulescanjndilookup.py -d /
 
 python3 ulescanjndilookup.py -d /home/usuario
-
-pip3 install reportlab
