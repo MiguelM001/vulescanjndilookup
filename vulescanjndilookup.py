@@ -69,7 +69,7 @@ def escaner(ruta):
 							if archivoJndiLookup[len(archivoJndiLookup)-16:len(archivoJndiLookup)] == 'JndiLookup.class':
 								primerIndicador= False                
 								print("\nSe ha detectado la vulnerabilidad CVE-2021-44228 en su sistema:")
-								print("\nComprobación...\n")
+								print("\nComprobando . . .\n")
 								print(">>\t"+archivoJndiLookup[len(archivoJndiLookup)-16:len(archivoJndiLookup)])
 								print("\n")
 								print("¡¡¡Debe mitigar la vulnerabilidad CVE-2021-44228 cuanto antes!!!\n")
@@ -102,4 +102,4 @@ if len(sys.argv) <= 3 and len(sys.argv) >=2:
 else:
  		imprimirAyuda()
  		
-print("\nHecho por VenCERT-2022\n")
+print("\nRealizado para VenCERT-2022\n")
